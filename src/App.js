@@ -33,7 +33,7 @@ class App extends Component{
   async loadFile(file, reader) {
     let content = "";
     reader.onload = function(progressEvent) { //파일리더 객체의 읽기메소드 성공시 호출하는 함수 정의
-      content = progressEvent.target.result;
+      alert(progressEvent.target.result); //여기에 Content를 받아야하는데 ... 왜 내용이 안받아지지
     };
     reader.readAsText(file);
     return content; 
