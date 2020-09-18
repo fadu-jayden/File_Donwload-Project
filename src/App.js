@@ -33,26 +33,31 @@ class App extends Component{
   loadFile(copyFile) {
 
     let rawFile = new XMLHttpRequest();
-    // let filePath = "file:///D:/workspace/annes_order/filedownload_project/src/datas/";
-    // let fileName = "test.txt";
+    let totalFileName = "file:///C:/your/path/to/test.txt" ;
+    //       D:\workspace\annes_order\filedownload_project\src\datas
+
     // let totalFileName = filePath+fileName;
+
+    // let testFileName = "./real.txt";
     // alert("rawFile 오픈 전");
-    // rawFile.open("GET",totalFileName,false);
-    rawFile.open("GET","real.txt",false);
+    rawFile.open("GET",totalFileName,false);
     // alert("rawFile 오픈 후");
     rawFile.onreadystatechange = function(){
       alert("함수는 실행되었다.");
         if(rawFile.readyState === 4){
           if(rawFile.status === 200 || rawFile.status == 0){
             let allText = rawFile.responseText;
-            alert(allText);
-            copyFile("real.txt",allText);
+            alert("리스폰스 = "+rawFile.response);
+            alert("리스폰스 타입 = "+rawFile.responseType);
+            alert("리스폰스 URL = "+rawFile.responseURL);
+            alert("리스폰스 텍스트 = "+allText);
+
+            copyFile(totalFileName,allText);
           }//if end
         }//if end
     }//onreadystatechange() end
     rawFile.send(null);
   }//manageFile() end
-
 
   copyFile = (fileName,content) => {
 
