@@ -18,19 +18,19 @@ class App extends Component{
     let file = fileList[0]; //리스트중에 제일 첫번째 요소를 반환
     
     let reader = new FileReader(); //파일리더 객체 생성
-    this.loadFile(file, reader);
+    this.loadFile(file, reader, this.copyFile);
   }//manageFile() end
 
-   loadFile(file, reader) {
+   loadFile(file, reader, copyFile) {
     let content = "";
     reader.readAsText(file);
     reader.onload = function(progressEvent) { //파일리더 객체의 읽기메소드 성공시 호출하는 함수 정의
       content = reader.result; //여기에 Content를 받아야하는데 ... 왜 내용이 안받아지지
-      this.copyFile(file.name,content);
+      copyFile(file.name,content);
     };
   }//loadFile() end
 
-  copyFile(fileName,content) {
+  copyFile = (fileName,content) => {
 
     let blob = new Blob([content],{type:'text/plain'});
     let link = document.createElement("a");
