@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import axious from 'axios';
 import ListModule from './components/fileList.js'
 import Pagination from './components/pagination.js'
 import './css/fileUpdown.css'
 import 'semantic-ui-css/semantic.min.css'
-import { Input,Button } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
 
 class App extends Component{
   constructor() {
@@ -32,26 +31,29 @@ class App extends Component{
     };
   }//loadFile() end
 
-  uploadFile() { //Ajax를 통해 백단과 통신한다. 파일업로드.
+  uploadFile(e) { //Ajax를 통해 백단과 통신한다. 파일업로드.
     
+    let fileList = e.target.files;
+    console.log(fileList);
+    let file = fileList[0];
+    console.log(file);
+
+    // let a = document.createElement("a");
+    // a.href="/datas/"+file;
+    // a.download="/datas/downloadFile.txt";
+    // a.click();
   }//uploadFile() end
-
-
-  
-  downloadFile() { //Ajax를 통해 백단과 통신한다. 파일다운로드. 
-
-  }
 
   render(){
     return <div id ="layout_basic">
       
       <div id ="layout_upload">
         <h1>FileUpload</h1>
-        <Input type="file" onChange={this.uploadFile}></Input>
+        <Input type="file" onChange={(e)=>this.uploadFile(e)}></Input>
       </div>
 
       <div id="layout_download">
-        
+
         <div id ="section_fileList">
           <ListModule></ListModule>
         </div>
