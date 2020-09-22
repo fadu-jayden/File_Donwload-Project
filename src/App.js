@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
+import './css/fileUpdown.css'
 
 class App extends Component{
   constructor() {
@@ -23,14 +23,12 @@ class App extends Component{
     reader.readAsText(file);
     reader.onload = function(progressEvent) { //파일리더 객체의 읽기메소드 성공시 호출하는 함수 정의
       content = reader.result;
-      uploadFile(); //파일을 업로드합니다.
+      // uploadFile(); //파일을 업로드합니다.
     };
   }//loadFile() end
 
   uploadFile() { //Ajax를 통해 백단과 통신한다. 파일업로드.
     
-    
-
   }//uploadFile() end
 
   getFileList() { //백단에서 파일리스트를 받는다, (페이지네이트 포함)
@@ -47,6 +45,28 @@ class App extends Component{
   render(){
     return <div>
       
+      <div id ="layout_upload">
+        <h1>FileUpload</h1>
+        <input type="file" onChange={this.uploadFile}></input>
+      </div>
+
+      <div id="layout_download">
+        <div id ="section_download">
+          <button class = "downloadBtn"> Download </button>
+        </div>
+
+        <ul id ="section_fileList">
+            <li class ="group_fileItem">FileName1</li>
+            <li class ="group_fileItem">FileName1</li>
+            <li class ="group_fileItem">FileName1</li>
+            <li class ="group_fileItem">FileName1</li>
+        </ul>
+
+        <div id ="section_paginate">
+          <div id="paginate">페이지네이트 위치</div>
+        </div>
+
+      </div>
 
 
   </div>;

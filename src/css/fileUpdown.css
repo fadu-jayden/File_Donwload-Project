@@ -1,0 +1,44 @@
+
+
+/* 
+      <div id ="layout_upload">
+      <h1>FileUpload</h1>
+      <input type="file" onChange={this.uploadFile}></input>
+    </div>
+
+    <div id="layout_download">
+      <div id ="section_download">
+
+      </div>
+
+      <div id ="section_fileList">
+
+      </div>
+
+      <div id ="section_paginate">
+
+      </div>
+
+    </div> */
+
+
+#layout_upload {
+    background-color: aqua;
+}
+
+#layout_download {
+    background-color: burlywood;
+}
+
+#section_download {
+    background-color: coral;
+}
+
+#section_fileList {
+    background-color: darkgoldenrod;
+}
+
+#section_paginate {
+    background-color: darkslategray;
+}
+
