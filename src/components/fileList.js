@@ -1,5 +1,6 @@
 import React from 'react'
 import { Checkbox, List } from 'semantic-ui-react'
+import '../css/fileItem.css'
 
 const ListExampleSelection = () => (
   <List selection verticalAlign='middle'>
