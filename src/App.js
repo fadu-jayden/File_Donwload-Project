@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import ListModule from './components/fileList.js'
+import Pagination from './components/pagination.js'
 import './css/fileUpdown.css'
+import 'semantic-ui-css/semantic.min.css'
+import { Input,Button } from 'semantic-ui-react';
 
 class App extends Component{
   constructor() {
@@ -47,23 +51,18 @@ class App extends Component{
       
       <div id ="layout_upload">
         <h1>FileUpload</h1>
-        <input type="file" onChange={this.uploadFile}></input>
+        <Input type="file" onChange={this.uploadFile}></Input>
       </div>
 
       <div id="layout_download">
         <div id ="section_download">
-          <button class = "downloadBtn"> Download </button>
+          <Button>Click Here</Button>
         </div>
 
-        <ul id ="section_fileList">
-            <li class ="group_fileItem">FileName1</li>
-            <li class ="group_fileItem">FileName1</li>
-            <li class ="group_fileItem">FileName1</li>
-            <li class ="group_fileItem">FileName1</li>
-        </ul>
+        <ListModule id ="section_fileList" ></ListModule>
 
         <div id ="section_paginate">
-          <div id="paginate">페이지네이트 위치</div>
+          <Pagination id="paginate"></Pagination>
         </div>
 
       </div>
