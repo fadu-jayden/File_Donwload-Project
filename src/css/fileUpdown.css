@@ -22,23 +22,48 @@
     </div> */
 
 
+#layout_basic {
+    display: flex;
+    width:1000px;
+    height:500px;
+    background-color: red;
+
+}
+
 #layout_upload {
+    width:400px;
     background-color: aqua;
 }
 
 #layout_download {
-    background-color: burlywood;
+    width:600px;
+    background-color: bisque;
 }
 
 #section_download {
+    position: relative;
+    height:50px;
     background-color: coral;
 }
 
+#section_download button {
+    position: absolute;
+    right:0;
+    top:5px;
+}
+
 #section_fileList {
-    background-color: darkgoldenrod;
+    height:400px;
+    background-color: pink;
 }
 
 #section_paginate {
     background-color: darkslategray;
 }
 
+#section_paginate #paginate {
+    margin:auto;
+    width:200px;
+    height:50px;
+    background-color: royalblue;
+}

@@ -47,7 +47,7 @@ class App extends Component{
   }
 
   render(){
-    return <div>
+    return <div id ="layout_basic">
       
       <div id ="layout_upload">
         <h1>FileUpload</h1>
@@ -56,15 +56,19 @@ class App extends Component{
 
       <div id="layout_download">
         <div id ="section_download">
-          <Button>Click Here</Button>
+          <Button>DownLoad</Button>
         </div>
 
-        <ListModule id ="section_fileList" ></ListModule>
+        <div id ="section_fileList">
+          <ListModule></ListModule>
+        </div>
 
         <div id ="section_paginate">
-          <Pagination id="paginate"></Pagination>
+          <div id="paginate">
+            <Pagination></Pagination>
+          </div>
         </div>
-
+        
       </div>
 
 
