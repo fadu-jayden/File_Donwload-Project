@@ -51,10 +51,7 @@ class App extends Component{
       </div>
 
       <div id="layout_download">
-        <div id ="section_download">
-          <Button onClick={this.getFileList}>DownLoad</Button>
-        </div>
-
+        
         <div id ="section_fileList">
           <ListModule></ListModule>
         </div>
