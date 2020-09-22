@@ -35,10 +35,8 @@ class App extends Component{
     
   }//uploadFile() end
 
-  getFileList() { //백단에서 파일리스트를 받는다, (페이지네이트 포함)
-    axios.get('/datas/fileList.json').then(response => {
-      alert(response.data);
-    })
+  getFileList() { 
+    
   }//getFileList() 
 
   
@@ -56,7 +54,7 @@ class App extends Component{
 
       <div id="layout_download">
         <div id ="section_download">
-          <Button>DownLoad</Button>
+          <Button onClick={this.getFileList}>DownLoad</Button>
         </div>
 
         <div id ="section_fileList">
@@ -68,7 +66,7 @@ class App extends Component{
             <Pagination></Pagination>
           </div>
         </div>
-        
+
       </div>
 
 
