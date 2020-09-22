@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import axious from 'axios';
 import ListModule from './components/fileList.js'
 import Pagination from './components/pagination.js'
 import './css/fileUpdown.css'
@@ -11,6 +11,7 @@ class App extends Component{
     super();
     this.state={
     };
+
   }//cons() end
 
   //선택된 파일이 변경될때(onChange이벤트) 일어나는 콜백함수 manageFile
@@ -35,9 +36,6 @@ class App extends Component{
     
   }//uploadFile() end
 
-  getFileList() { 
-    
-  }//getFileList() 
 
   
   downloadFile() { //Ajax를 통해 백단과 통신한다. 파일다운로드. 
