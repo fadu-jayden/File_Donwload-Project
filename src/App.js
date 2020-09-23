@@ -1,28 +1,22 @@
 import React, {Component} from 'react';
 import ListModule from './components/fileList.js'
-import Pagination from './components/pagination.js'
 import './css/fileUpdown.css'
 import 'semantic-ui-css/semantic.min.css'
 import axios from 'axios';
+import {Button,Input} from 'semantic-ui-react'
 
 class App extends Component{
   constructor() {
     super();
     this.state={
+      file: Object(),
     };
-
+    this.fileUpload = this.fileUpload.bind(this);
   }//cons() end
 
-
-  
-/* <form action="http://localhost:8080/api/fileUpload" id="form" name="form" method="post" encType="multipart/form-data">
-          <input id="targetFile" name="targetFile" type="file" onChange={this.fileSelect}></input>
-          <button type="submit" onClick={this.fileUpload}>aa</button>
-        </form>
-       */
-  fileUpload(file) {
-
+  fileUpload(listRefresh) {
     const formData = new FormData();
+    const {file} = this.state;
     formData.append("targetFile",file);
 
     axios({
@@ -33,14 +27,20 @@ class App extends Component{
         Accept: 'application/json',
         'Content-Type': 'multipart/form-data'
       }
-   }).then((response)=>alert(response.data==1?"성공!":"실패.."));
+   }).then((response)=>{
+     if(response.data===1){
+       alert("파일 업로드에 성공했습니다");
+       listRefresh();
+     }else{
+       alert("파일 업로드에 실패했습니다");
+     }//if~else end
+    });
   }//fileUpload() end
 
   fileSelect(e) {
     //파일리스트를 받아서
     const file = e.target.files[0];
-    //FileUpload를 호출하면 된다.
-    this.fileUpload(file);
+    this.setState({file:file});
   }//fileSelect() end
 
   render(){
@@ -48,22 +48,15 @@ class App extends Component{
       
       <div id ="layout_upload">
         <h1>FileUpload</h1>
+        <Input id="targetFile" name="targetFile" type="file" onChange={(e)=>this.fileSelect(e)}></Input>
+        <Button type="submit" onClick={()=>this.fileUpload(this.ListModule.getFileList)}>업로드</Button>
       </div>
       
-      <input id="targetFile" name="targetFile" type="file" onChange={(e)=>this.fileSelect(e)}></input>
-      <button type="submit" onClick={this.fileUpload}>aa</button>
 
       <div id="layout_download">
 
-        <div id ="section_fileList">
-          <ListModule></ListModule>
-        </div>
-
-        <div id ="section_paginate">
-          <div id="paginate">
-            <Pagination></Pagination>
-          </div>
-        </div>
+        <ListModule ref={(ref)=>this.ListModule=ref}></ListModule>
+        
       </div>
   </div>;
   }//render() end

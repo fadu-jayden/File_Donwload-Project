@@ -23,47 +23,28 @@
 
 
 #layout_basic {
+    position: relative;
     display: flex;
     width:1000px;
     height:500px;
-    background-color: red;
+    /* background-color: red; */
+    border : 1px solid gray;
+    margin:0 auto;
 
 }
 
 #layout_upload {
+    position: relative;
     width:400px;
-    background-color: aqua;
+    /* background-color: aqua; */
+    border-right: 1px solid gray;
+
 }
 
 #layout_download {
-    width:600px;
-    background-color: bisque;
-}
-
-#section_download {
     position: relative;
-    height:50px;
-    background-color: coral;
+    width:600px;
+    /* background-color: bisque; */
 }
 
-#section_download button {
-    position: absolute;
-    right:0;
-    top:5px;
-}
 
-#section_fileList {
-    height:400px;
-    background-color: pink;
-}
-
-#section_paginate {
-    background-color: darkslategray;
-}
-
-#section_paginate #paginate {
-    margin:auto;
-    width:200px;
-    height:50px;
-    background-color: royalblue;
-}

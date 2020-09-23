@@ -1,7 +1,32 @@
 
+#section_downLoad {
+    position: relative;
+    background-color: slategrey;
+    height:100%;
+}
 
-.group_fileItem {
-    padding-top:10px;
-    padding-bottom:10px;
+#section_fileList {
+    background-color: steelblue;
+    height:350px;
+}
+
+.fileItem {
     background-color: sienna;
+}
+
+#section_pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width:100%;
+    /* height:80px; */
+    background-color: skyblue;
+}
+
+#section_pagination .pagination {
+    
+    /* margin:0 auto;
+    margin:auto;
+    width:300px; */
+    /* background-color: royalblue; */
 }
