@@ -52,12 +52,10 @@ class App extends Component{
         <Button type="submit" onClick={()=>this.fileUpload(this.ListModule.getFileList)}>업로드</Button>
       </div>
       
-
       <div id="layout_download">
-
         <ListModule ref={(ref)=>this.ListModule=ref}></ListModule>
-        
       </div>
+    
   </div>;
   }//render() end
 }

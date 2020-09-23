@@ -81,19 +81,18 @@ class ListExampleSelection extends Component{
   }//changePage() end
 
   render(){
-      const getFiles = this.state.getFiles;
       const showFiles = this.state.showFiles;
       return<div id ="section_downLoad">
         <Button className="downloadBtn" onClick={this.downloadFiles}>다운로드</Button>
 
         <List id ="section_fileList" selection verticalAlign='middle'>
         <List.Item className ="fileItem" >
-            {showFiles.map((file,index)=> {
-              return <List.Content>
-              <Checkbox onChange={this.selectFile} label={file} key={index} />
+              {showFiles.map((file,index)=> {
+              return <List.Content key={index}>
+              <Checkbox onChange={this.selectFile} label={file}  />
               {/* {console.log(file.title+' '+file.id)} */}
               </List.Content>})}
-        </List.Item>
+              </List.Item>
         </List>
         <div id="section_pagination">
         
