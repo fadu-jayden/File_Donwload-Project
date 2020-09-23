@@ -48,10 +48,9 @@ class ListExampleSelection extends Component{
 
     selectedFiles.map((file) => {
 
-      let postFix = file.split('.');
       let a = document.createElement("a");
       a.href="/datas/"+file;
-      a.download="downloadFile"+postFix[1];
+      a.download=file;
       a.click();
     });
 
