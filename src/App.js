@@ -53,6 +53,10 @@ class App extends Component{
        let thisFileId = this.state.fileId+1;
        thisFiles.push(new File(thisFileId,file.name,false));
        this.setState({getFiles:thisFiles});
+       this.setState({fileId:thisFileId});
+      //  console.log(thisFileId +' '+file.name+' ');
+       this.setState({file:new File()});
+       this.paintFileList();
      }else{
        alert("파일 업로드에 실패했습니다");
      }//if~else end
@@ -113,7 +117,7 @@ class App extends Component{
       this.setState({checkedFiles :checkedFiles});
     }//if~else end
 
-    console.log(checkedFiles);
+    // console.log(checkedFiles);
   }//checkFile() end
 
   downloadFiles() {
@@ -142,31 +146,33 @@ class App extends Component{
         <h1>uploadFile</h1>
         <Input id="targetFile" name="targetFile" type="file" onChange={(e)=>this.selectUploadFile(e)}></Input>
         <Button type="submit" onClick={this.uploadFile}>업로드</Button>
-        
+
         <h1>checkFiles</h1>
-        <List selection verticalAlign='middle'>
-            {checkedFiles.map((checkFile,index)=>{
-              return(
-              <List.Item key={index}>
-                  <List.Content>
-                    <Label>{checkFile}</Label>
-                  </List.Content>
-              </List.Item>)
-            })}
+        <div id="section_checkList">
+          <List  selection verticalAlign='middle'>
+              {checkedFiles.map((checkFile,index)=>{
+                return(
+                <List.Item key={index}>
+                    <List.Content >
+                      <Label>{checkFile}</Label>
+                    </List.Content>
+                </List.Item>)
+              })}
           </List>
+        </div>
       </div>
 
       <div id="layout_download">
         <div id ="section_downLoad">
           <Button className="downloadBtn" onClick={this.downloadFiles}>다운로드</Button>
-
+          
           <List id ="section_fileList" selection verticalAlign='middle'>
           <List.Item className ="fileItem" >
-            {console.log('\n')}
+            {/* {console.log('\n')} */}
                 {showFiles.map((file)=> {
                 return <List.Content key={file.id}>
                 <Checkbox onChange={(e)=>{this.checkFile(e,file);}} label={file.title} checked={file.isChecked} />
-                {console.log(file.title+' '+file.id)}
+                {/* {console.log(file.title+' '+file.id)} */}
                 </List.Content>})}
                 </List.Item>
           </List>

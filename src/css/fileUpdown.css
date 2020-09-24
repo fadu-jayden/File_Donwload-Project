@@ -1,27 +1,4 @@
 
-
-/* 
-      <div id ="layout_upload">
-      <h1>FileUpload</h1>
-      <input type="file" onChange={this.uploadFile}></input>
-    </div>
-
-    <div id="layout_download">
-      <div id ="section_download">
-
-      </div>
-
-      <div id ="section_fileList">
-
-      </div>
-
-      <div id ="section_paginate">
-
-      </div>
-
-    </div> */
-
-
 #layout_basic {
     position: relative;
     display: flex;
@@ -36,9 +13,17 @@
 #layout_upload {
     position: relative;
     width:400px;
+    height:500px;
     /* background-color: aqua; */
     border-right: 1px solid gray;
+}
 
+#section_checkList {
+    position: relative;
+    overflow-y: auto;
+    width:400px;
+    height:330px;
+    /* background-color: tomato; */
 }
 
 #layout_download {
@@ -50,17 +35,38 @@
 
 #section_downLoad {
     position: relative;
-    background-color: slategrey;
+    /* background-color: slategrey; */
     height:100%;
 }
 
-#section_fileList {
+#section_downLoad .downloadBtn {
+    position: relative;
+    margin-left:480px;
+    margin-top:10px;
+    /* background-color: red; */
+}
+
+#layout_download #section_downLoad #section_fileList {
     background-color: steelblue;
+    /* justify-content: space-between; */
     height:350px;
 }
 
-.fileItem {
-    background-color: sienna;
+#layout_download #section_downLoad #section_fileList .fileItem{
+    /* background-color: red; */
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* flex-direction: row;
+    justify-content: space-between; */
+    /* font-size: 20pt;
+    line-height: 20pt;
+    margin-top:20px*/
+} 
+
+#layout_download #section_downLoad #section_fileList .fileItem label {
+    font-size: 15pt;
 }
 
 #section_pagination {
@@ -69,13 +75,5 @@
     justify-content: center;
     width:100%;
     /* height:80px; */
-    background-color: skyblue;
-}
-
-#section_pagination .pagination {
-    
-    /* margin:0 auto;
-    margin:auto;
-    width:300px; */
-    /* background-color: royalblue; */
+    /* background-color: skyblue; */
 }
