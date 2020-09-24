@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import './css/fileUpdown.css'
 import 'semantic-ui-css/semantic.min.css'
 import axios from 'axios';
-import {Button, List, Pagination, Checkbox, Label, Header
+import {Button,Input, List, Pagination, Checkbox, Label, Header
 ,Grid, GridColumn} from 'semantic-ui-react'
-import { InputFile } from 'semantic-ui-react-input-file'
 
 class File {
   constructor(id,title,isChecked){
@@ -13,7 +12,6 @@ class File {
     this.isChecked=isChecked;
   }//cons
 }//class File end
-
 
 class App extends Component{
   constructor() {
@@ -70,8 +68,8 @@ class App extends Component{
        let thisFileId = this.state.fileId+1;
        thisFiles.push(new File(thisFileId,file.name,false));
 
-       const  targetFileInputElement = document.querySelector(".ui.left.pointing.basic.label");
-       targetFileInputElement.innerHTML="Select File";
+       const  targetFileInputElement = document.querySelector("#targetFile");
+       targetFileInputElement.value = "";;
 
        this.setState({getFiles:thisFiles});
        this.setState({fileId:thisFileId});
@@ -87,10 +85,6 @@ class App extends Component{
   selectUploadFile(e) {
     //파일리스트를 받아서
     const file = e.target.files[0];
-    const  targetFileInputElement = document.querySelector(".ui.left.pointing.basic.label");
-    targetFileInputElement.innerHTML=file.name;
-    
-
     this.setState({file:file});
   }//selectUploadFile() end
 
@@ -165,19 +159,15 @@ class App extends Component{
     const showFiles = this.state.showFiles;
     const checkedFiles = this.state.checkedFiles;
 
-    return <Grid id ="layout_basic" stackable>
-      <GridColumn id ="layout_upload">
+    return <div id ="layout_basic">
+      <div id ="layout_upload">
         <Header as='h1'>uploadFile</Header>
-        <InputFile
-            input={{
-              id: 'targetFile',
-              onChange: (e)=>this.selectUploadFile(e),
-            }}
-        />
-        <Button type="submit" onClick={this.uploadFile}>Upload</Button>
+        <Input id="targetFile" name="targetFile" type="file" onChange={(e)=>this.selectUploadFile(e)}></Input>
+        <Button type="submit" onClick={this.uploadFile}>업로드</Button>
         
         <Header as='h1'>checkFiles</Header>
-          <List  id="section_checkList" selection verticalAlign='middle'>
+        <div id="section_checkList">
+          <List  selection verticalAlign='middle'>
               {checkedFiles.map((checkFile,index)=>{return(
                 <List.Item key={index} >
                     <List.Content >
@@ -185,10 +175,12 @@ class App extends Component{
                     </List.Content>
                 </List.Item>)})}
           </List>
-      </GridColumn>
+        </div>
+      </div>
 
-      <GridColumn id="layout_download">
-          <Button className="downloadBtn" onClick={this.downloadFiles}>Download</Button>
+      <div id="layout_download">
+        <div id ="section_downLoad">
+          <Button className="downloadBtn" onClick={this.downloadFiles}>다운로드</Button>
           
           <List id ="section_fileList" selection verticalAlign='middle'>
             <List.Item className ="fileItem" >
@@ -208,9 +200,10 @@ class App extends Component{
               onPageChange={this.changePage}
             />
           </div>
-      </GridColumn>
+        </div>
+      </div>
 
-  </Grid>;
+  </div>;
   }//render() end
 }
 

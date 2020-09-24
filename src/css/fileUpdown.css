@@ -1,58 +1,72 @@
+body{
+    background-color: #cce2ff;
+}
+
+/* .header {
+    background-color: gray;
+} */
+
+.ui.left.pointing.basic.label {
+    white-space: nowrap;
+    overflow-x: auto;
+}
 
 #layout_basic {
     position: relative;
     display: flex;
-    width:1000px;
+    width:60%;
     height:500px;
-    /* background-color: red; */
-    border : 1px solid gray;
+    /* background-color: red;  */
+    /* border : 1px solid gray; */
     margin:0 auto;
-
+    margin-top: 10px;
 }
 
 #layout_upload {
     position: relative;
-    width:400px;
+    width:40%;
     height:500px;
     /* background-color: aqua; */
-    border-right: 1px solid gray;
+    padding : 10px 0 0 10px;
+    border-right: 1px solid silver;
 }
 
 #section_checkList {
     position: relative;
     overflow-y: auto;
-    width:400px;
     height:330px;
-    /* background-color: tomato; */
+    /* background-color: #e1e9f5; */
 }
 
 #layout_download {
     position: relative;
-    width:600px;
+    width:60%;
+    height:100%;
+    padding: 0;
     /* background-color: bisque; */
 }
 
 
-#section_downLoad {
-    position: relative;
-    /* background-color: slategrey; */
-    height:100%;
+
+#layout_download .downloadBtn {
+    position: absolute;
+    right:10px;
+    top:20px;
+    background-color: #00b5ad;
+    color: white;
 }
 
-#section_downLoad .downloadBtn {
-    position: relative;
-    margin-left:480px;
-    margin-top:10px;
-    /* background-color: red; */
-}
-
-#layout_download #section_downLoad #section_fileList {
-    background-color: steelblue;
+#layout_download #section_fileList {
+    /* background-color: steelblue; */
     /* justify-content: space-between; */
-    height:350px;
+    width:100%;
+    /* padding-left: 20%; */
+    height:400px;
+    padding-top: 50px;
+    /* background-color: tomato; */
 }
 
-#layout_download #section_downLoad #section_fileList .fileItem{
+#layout_download #section_fileList .fileItem{
     /* background-color: red; */
     height:100%;
     display: flex;
@@ -65,7 +79,7 @@
     margin-top:20px*/
 } 
 
-#layout_download #section_downLoad #section_fileList .fileItem label {
+#layout_download #section_fileList .fileItem label {
     font-size: 15pt;
 }
 
@@ -74,6 +88,7 @@
     display: flex;
     justify-content: center;
     width:100%;
+    padding-top: 20px;
     /* height:80px; */
     /* background-color: skyblue; */
 }
