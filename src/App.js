@@ -38,6 +38,14 @@ class App extends Component{
     const formData = new FormData();
     const {file} = this.state;
     formData.append("targetFile",file);
+    let getFiles = this.state.getFiles;
+    getFiles = getFiles.map((files)=>{return files.title});
+    
+    if(getFiles.indexOf(file.name)!==-1){
+      alert("이미 있는 파일명입니다.");
+      return;
+    }//if end
+
     axios({
       url: 'http://localhost:8080/api/uploadFile',
       method: 'POST',
@@ -54,7 +62,6 @@ class App extends Component{
        thisFiles.push(new File(thisFileId,file.name,false));
        this.setState({getFiles:thisFiles});
        this.setState({fileId:thisFileId});
-      //  console.log(thisFileId +' '+file.name+' ');
        this.setState({file:new File()});
        this.paintFileList();
      }else{
