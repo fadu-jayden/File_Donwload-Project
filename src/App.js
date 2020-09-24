@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './css/fileUpdown.css'
 import 'semantic-ui-css/semantic.min.css'
 import axios from 'axios';
-import {Button,Input, List, Pagination, Checkbox, Label} from 'semantic-ui-react'
+import {Button,Input, List, Pagination, Checkbox, Label, Header} from 'semantic-ui-react'
 
 class File {
   constructor(id,title,isChecked){
@@ -37,6 +37,12 @@ class App extends Component{
   uploadFile() {
     const formData = new FormData();
     const {file} = this.state;
+
+    if(file.name===undefined){
+      alert("선택된 파일이 없습니다.");
+      return ;
+    }
+
     formData.append("targetFile",file);
     let getFiles = this.state.getFiles;
     getFiles = getFiles.map((files)=>{return files.title});
@@ -60,6 +66,10 @@ class App extends Component{
        let thisFiles = this.state.getFiles;
        let thisFileId = this.state.fileId+1;
        thisFiles.push(new File(thisFileId,file.name,false));
+
+       const  targetFileInputElement = document.querySelector("#targetFile");
+       targetFileInputElement.value = "";;
+
        this.setState({getFiles:thisFiles});
        this.setState({fileId:thisFileId});
        this.setState({file:new File()});
@@ -150,21 +160,19 @@ class App extends Component{
 
     return <div id ="layout_basic">
       <div id ="layout_upload">
-        <h1>uploadFile</h1>
+        <Header as='h1'>uploadFile</Header>
         <Input id="targetFile" name="targetFile" type="file" onChange={(e)=>this.selectUploadFile(e)}></Input>
         <Button type="submit" onClick={this.uploadFile}>업로드</Button>
-
-        <h1>checkFiles</h1>
+        
+        <Header as='h1'>checkFiles</Header>
         <div id="section_checkList">
           <List  selection verticalAlign='middle'>
-              {checkedFiles.map((checkFile,index)=>{
-                return(
-                <List.Item key={index}>
+              {checkedFiles.map((checkFile,index)=>{return(
+                <List.Item key={index} >
                     <List.Content >
-                      <Label>{checkFile}</Label>
+                      <Label >{checkFile}</Label>
                     </List.Content>
-                </List.Item>)
-              })}
+                </List.Item>)})}
           </List>
         </div>
       </div>
@@ -174,14 +182,14 @@ class App extends Component{
           <Button className="downloadBtn" onClick={this.downloadFiles}>다운로드</Button>
           
           <List id ="section_fileList" selection verticalAlign='middle'>
-          <List.Item className ="fileItem" >
-            {/* {console.log('\n')} */}
-                {showFiles.map((file)=> {
-                return <List.Content key={file.id}>
+            <List.Item className ="fileItem" >
+              {/* {console.log('\n')} */}
+                {showFiles.map((file)=> {return (
+              <List.Content key={file.id}>
                 <Checkbox onChange={(e)=>{this.checkFile(e,file);}} label={file.title} checked={file.isChecked} />
                 {/* {console.log(file.title+' '+file.id)} */}
-                </List.Content>})}
-                </List.Item>
+              </List.Content>)})}
+            </List.Item>
           </List>
 
           <div id="section_pagination">
