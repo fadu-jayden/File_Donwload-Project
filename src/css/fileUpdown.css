@@ -1,6 +1,4 @@
-body{
-    background-color: #cce2ff;
-}
+
 
 /* .header {
     background-color: gray;
@@ -9,12 +7,13 @@ body{
 .ui.left.pointing.basic.label {
     white-space: nowrap;
     overflow-x: auto;
+    width:150px;
 }
 
 #layout_basic {
     position: relative;
     display: flex;
-    width:60%;
+    width:800px;
     height:500px;
     /* background-color: red;  */
     /* border : 1px solid gray; */
