@@ -4,12 +4,20 @@ import 'semantic-ui-css/semantic.min.css'
 import axios from 'axios';
 import {Button,Input, List, Pagination, Checkbox, Label} from 'semantic-ui-react'
 
+class File {
+  constructor(id,title,isChecked){
+    this.id=id;
+    this.title=title;
+    this.isChecked=isChecked;
+  }//cons
+}//class File end
+
 class App extends Component{
   constructor() {
     super();
     this.state={
       file: Object(),
-      fileNo:0,
+      fileId:0,
       pageNo:1,
       offsetSize:5,
       getFiles : [],
@@ -42,8 +50,8 @@ class App extends Component{
      if(response.data===1){
        alert("파일 업로드에 성공했습니다");
        let thisFiles = this.state.getFiles;
-       let thisFileNo = this.state.fileNo+1;
-       thisFiles.push({title:file.name,id:thisFileNo});
+       let thisFileId = this.state.fileId+1;
+       thisFiles.push(new File(thisFileId,file.name,false));
        this.setState({getFiles:thisFiles});
      }else{
        alert("파일 업로드에 실패했습니다");
@@ -60,13 +68,14 @@ class App extends Component{
 
 
   async getFileList() { 
-    let fileNo = this.state.fileNo;
+    let fileId = this.state.fileId;
     await axios.get('/datas/').then((response)=>{
       let arr = response.data.map((data)=>{
-        return {id:++fileNo,title:data};
+        return new File(++fileId,data,false);
       })
+
       this.setState({getFiles : arr});
-      this.setState({fileNo:fileNo});
+      this.setState({fileId:fileId});
       this.paintFileList();
     })
   }//getFileList() 
@@ -86,17 +95,24 @@ class App extends Component{
     this.setState({showFiles:showFiles});
   }//paintFileList() end
 
-  checkFile(e) {
+  checkFile(e,file) {
+    //아예 checkFiles에 File객체를 넣는건 어때?? Checked여부도 따져야하잖아.
+
     const {checkedFiles} = this.state;
-    let targetFileName = e.target.innerHTML;
+    let targetFileName = file.title;
     
     if(checkedFiles.indexOf(targetFileName)===-1){
       checkedFiles.push(targetFileName);
+      file.isChecked=true;
       this.setState({checkedFiles :checkedFiles});
     }else{
-      checkedFiles.pop(targetFileName);
+      const targetIdx = checkedFiles.indexOf(targetFileName);
+      checkedFiles.splice(targetIdx,1);
+      // checkedFiles.pop(targetFileName);
+      file.isChecked=false;
       this.setState({checkedFiles :checkedFiles});
     }//if~else end
+
     console.log(checkedFiles);
   }//checkFile() end
 
@@ -129,9 +145,9 @@ class App extends Component{
         
         <h1>checkFiles</h1>
         <List selection verticalAlign='middle'>
-            {checkedFiles.map((checkFile)=>{
+            {checkedFiles.map((checkFile,index)=>{
               return(
-              <List.Item >
+              <List.Item key={index}>
                   <List.Content>
                     <Label>{checkFile}</Label>
                   </List.Content>
@@ -149,7 +165,7 @@ class App extends Component{
             {console.log('\n')}
                 {showFiles.map((file)=> {
                 return <List.Content key={file.id}>
-                <Checkbox onChange={this.checkFile} label={file.title}  />
+                <Checkbox onChange={(e)=>{this.checkFile(e,file);}} label={file.title} checked={file.isChecked} />
                 {console.log(file.title+' '+file.id)}
                 </List.Content>})}
                 </List.Item>
