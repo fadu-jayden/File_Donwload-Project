@@ -1,11 +1,7 @@
 import React,{Component} from 'react'
-import {Button, Input, Placeholder} from 'semantic-ui-react';
+import {Button, Input} from 'semantic-ui-react';
 
 class SearchModule extends Component {
-
-    constructor(){
-        super();
-    }
 
     render(){
         return<div id="section_search">

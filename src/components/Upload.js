@@ -146,6 +146,7 @@ class Upload extends Component{
 
   downloadFiles() {
     const {checkedFiles} = this.state;
+    let {getFiles} = this.state; 
 
     checkedFiles.forEach((file) => {
       let a = document.createElement("a");
@@ -153,6 +154,10 @@ class Upload extends Component{
       a.download=file;
       a.click();
     });
+    
+    getFiles.filter((file)=>file.isChecked=false);
+    this.setState({getFiles:getFiles}); 
+    this.setState({checkedFiles:[]});
   }//downloadFiles() end
 
   async changePage(event,data) {

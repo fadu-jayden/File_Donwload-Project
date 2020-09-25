@@ -82,7 +82,7 @@
     font-size: 15pt;
 }
 
-#section_pagination {
+#layout_download #section_pagination {
     position: relative;
     display: flex;
     justify-content: center;

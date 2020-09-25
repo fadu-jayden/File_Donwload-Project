@@ -2,14 +2,15 @@
 #layout_board {
     width:90%;
     margin : 0 auto;
-    background-color: hotpink;
+    /* background-color: hotpink; */
 }
 
 #layout_board #section_search {
     margin: 0 auto;
-    padding-top:10px;
+    padding-top:20px;
+    padding-bottom: 20px;
     width:430px;
-    background-color: green;
+    /* background-color: green; */
 }
 
 #layout_board #section_search #inp_search {
@@ -28,13 +29,23 @@
 
 
 #layout_board #section_table {
-    background-color: indianred;
+    /* background-color: indianred; */
 }
 
 #layout_board #section_table #headerCell_id {
     width:80px;
 }
 
-#layout_board #section_table #headerCell_createdDate {
+#layout_board #section_table #headerCell_date {
     width:150px;
+}
+
+#layout_board #section_pagination {
+    display: flex;
+    justify-content: center;
+    /* position: relative; */
+    /* margin:0 auto; */
+    padding-top: 20px;
+    width:100%;
+    /* background-color: indigo; */
 }
