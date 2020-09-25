@@ -1,23 +1,43 @@
-import React from 'react';
-import 'semantic-ui-css/semantic.min.css'
+import React, { Component } from 'react';
+import { Route, Link, Switch } from 'react-router-dom' ;
 import Upload from './components/Upload.js';
 import Board from './components/Board.js';
-import {Route, Link} from 'react-router-dom';
+import styled from 'styled-components';
 
 
+import {
+  Container,
+  Image, 
+  Menu,
+} from 'semantic-ui-react'
+import logo from './image/logo.png'
 
-const App = () => {
+const Wrapper = styled.div`
+padding-top: 3.3em;  
+`;
 
+class App extends Component {
 
-  return(
-    <div>
-      <Link to="/Upload">업로드</Link>
-      <Link to="/Board">게시판</Link>
-      
-      <Route path={['/Upload','/']} component ={Upload} exact={true}></Route>
-      <Route path="/Board" component={Board}></Route>
-    </div>    
-  );//render() end
-};
+  render() {
+    return (
+      <Wrapper>
+        <Menu fixed='top' inverted>
+          <Container>
+            <Menu.Item as={Link} to='/' header>
+              <Image size='tiny' src={logo} style={{ marginRight: '1.0em' }} />
+            </Menu.Item>
+            <Menu.Item as={Link} to='/Upload'>Upload</Menu.Item>
+            <Menu.Item as={Link} to='/Board'>Board</Menu.Item>
+          </Container>
+        </Menu>
+        <Switch>
+          <Route path={['/Upload','/']} component={Upload} exact={true}/>
+          <Route path="/Board" component={Board} />
+
+        </Switch>
+      </Wrapper>
+    );
+  }
+}
 
 export default App;
