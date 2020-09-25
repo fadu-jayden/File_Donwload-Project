@@ -1,0 +1,40 @@
+
+#layout_board {
+    width:90%;
+    margin : 0 auto;
+    background-color: hotpink;
+}
+
+#layout_board #section_search {
+    margin: 0 auto;
+    padding-top:10px;
+    width:430px;
+    background-color: green;
+}
+
+#layout_board #section_search #inp_search {
+    width:300px;
+    height:50px;
+}
+
+#layout_board #section_search #btn_search {
+    width:100px;
+    height:50px;
+    margin-left: 10px;
+    vertical-align: top;
+    background-color: #2185d0;
+    color: white;
+}
+
+
+#layout_board #section_table {
+    background-color: indianred;
+}
+
+#layout_board #section_table #headerCell_id {
+    width:80px;
+}
+
+#layout_board #section_table #headerCell_createdDate {
+    width:150px;
+}

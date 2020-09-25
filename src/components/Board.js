@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TableModule from './Table.js';
 import SearchModule from './Search.js';
+import '../css/board.css';
 
 class Board extends Component{
 
@@ -13,7 +14,7 @@ class Board extends Component{
 
 
     render(){
-        return <div>
+        return <div id="layout_board">
             <SearchModule></SearchModule>
             <TableModule></TableModule>
         </div>;
