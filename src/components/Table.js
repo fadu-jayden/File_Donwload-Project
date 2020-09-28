@@ -129,4 +129,13 @@ class TableModule extends Component{
     }//render() end
 }
 
+TableModule.defaultProps ={
+    getArticles : [
+        {id:1,title:'후후',writer:'jayden',date:'1992-10-16'},
+        {id:2,title:'키보드는 멋져',writer:'jayden',date:'1992-10-16'},
+        {id:3,title:'마우스를 부수자',writer:'jayden',date:'1992-10-16'},
+        {id:4,title:'바세린 찍먹',writer:'jayden',date:'1992-10-16'},
+    ]
+}
+
 export default TableModule;

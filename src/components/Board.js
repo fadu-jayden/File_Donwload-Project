@@ -1,19 +1,10 @@
 import React, {Component} from 'react';
 import TableModule from './Table.js';
 import SearchModule from './Search.js';
-import axios from 'axios';
 import '../css/board.css';
 
 class Board extends Component{
 
-    constructor(){
-        super();
-        // this.state={
-        //     getArticles:[],
-        // }
-
-        // this.getArticlesList();
-    }//cons end
 
 
     // async getArticlesList() {

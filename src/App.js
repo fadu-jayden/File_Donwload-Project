@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom' ;
 import Upload from './components/Upload.js';
 import Board from './components/Board.js';
+import TestBoard from './components/Test.js';
 import styled from 'styled-components';
 
 
@@ -28,11 +29,14 @@ class App extends Component {
             </Menu.Item>
             <Menu.Item as={Link} to='/Upload'>Upload</Menu.Item>
             <Menu.Item as={Link} to='/Board'>Board</Menu.Item>
+            <Menu.Item as={Link} to='/TestBoard'>TestBoard</Menu.Item>
+
           </Container>
         </Menu>
         <Switch>
           <Route path={['/Upload','/']} component={Upload} exact={true}/>
           <Route path="/Board" component={Board} />
+          <Route path="/TestBoard" component={TestBoard} />
 
         </Switch>
       </Wrapper>
