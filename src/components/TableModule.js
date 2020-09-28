@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Table, Pagination} from 'semantic-ui-react';
+import Route,{Link} from 'react-router-dom';
 
 class TableModule extends Component{
 
@@ -18,7 +19,7 @@ class TableModule extends Component{
 
     //이거 대신에 부모에 바뀐 page번호를 넘겨줘야함
     changePage(e,data) {
-        const changePageNo = data.activePage;
+        const changePageNo = data.activePage-1;
         this.props.pageFunction.changePageNo(changePageNo);
     }//changePage() end
 
@@ -62,6 +63,7 @@ class TableModule extends Component{
             <Table.Body>
                 {getArticles.map((article,index)=>{
                     return(
+                        // <Table.Row key={index} as={Link} to="/Board?id=12">
                         // <Table.Row key={index} onClick={   ()=>this.props.pageFunction.changeArticleId(article.id)} >
                         <Table.Row key={index} onClick={   ()=>this.clickArticle(article.id)} >
                     <Table.Cell>{article.id}</Table.Cell>

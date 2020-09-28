@@ -15,7 +15,7 @@ class Board extends Component{
             title:'',   //제목
             writer:'',  //저자
             size:10,    //한번에 보여줄 게시물 수
-            page:1,     //현재 페이지
+            page:0,     //현재 페이지
             totalCount:10, //전체 게시물 수
             articles:[], //게시물 데이터
             
@@ -81,7 +81,7 @@ class Board extends Component{
 
     changePageNo = async (pageNo) => {
         console.log('함수호출');
-        await this.setState({page:pageNo});
+        await this.setState({page:pageNo*this.state.size});
         this.getPages(); 
     }//changePageNo() end
 
