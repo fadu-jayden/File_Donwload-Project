@@ -15,7 +15,7 @@ class Board extends Component{
             title:'',   //제목
             writer:'',  //저자
             size:10,    //한번에 보여줄 게시물 수
-            page:0,     //현재 페이지
+            page:0,     //현재 페이지가 아니라 첫번째 인덱스이다. (보여줄 게시물의 첫 번째 인덱스)
             totalCount:10, //전체 게시물 수
             articles:[], //게시물 데이터
             
@@ -41,10 +41,10 @@ class Board extends Component{
         if(this.state.queryId !== undefined){
             this.showModalByQueryId();
         }//if end
-    }
+    }//componentDidMount() end
 
     async getPages(){
-        const page = this.state.page;
+        const page = this.state.page; 
         const size = this.state.size;
         const title = this.state.title;
         const writer = this.state.writer;
@@ -58,7 +58,7 @@ class Board extends Component{
             }
         })
         .then((response)=>{
-            console.log(`page=${page} size=${size} title=${title} writer=${writer}`)
+            // console.log(`page=${page} size=${size} title=${title} writer=${writer}`)
             datas = response.data.boards;
             total = response.data.totalCount;
             this.setState({articles:datas});
@@ -70,8 +70,8 @@ class Board extends Component{
 
     async showModalByQueryId(){
         // console.log('getDetail 실행');
-        await axios.get(`http://10.10.13.137:9000/ae/details?id=${this.state.queryId}`).
-        then((response)=>{
+        await axios.get(`http://10.10.13.137:9000/ae/details?id=${this.state.queryId}`)
+        .then((response)=>{
             this.setState({modalContent:response.data.contents});
             // console.log(response.data);
         }).then(()=>{
@@ -80,7 +80,7 @@ class Board extends Component{
     }//getDetail() end
 
     changePageNo = async (pageNo) => {
-        console.log('함수호출');
+        // console.log('함수호출');
         await this.setState({page:pageNo*this.state.size});
         this.getPages(); 
     }//changePageNo() end
@@ -88,6 +88,7 @@ class Board extends Component{
     changeArticleId = async (id) => {
         await this.setState({queryId:id});
         this.showModalByQueryId();
+        window.history.pushState("", "", `/Board?id=${id}`); //Refresh 없이 강제로 URL 변경
     }//changeArticle() end
 
     
