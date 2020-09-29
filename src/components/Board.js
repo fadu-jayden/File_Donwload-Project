@@ -28,6 +28,7 @@ class Board extends Component{
         this.closeModal = this.closeModal.bind(this);
         this.showModalByQueryId = this.showModalByQueryId.bind(this);
         this.changeArticleId = this.changeArticleId.bind(this);
+        this.changeSearchInfo = this.changeSearchInfo.bind(this); 
     }
 
     async componentDidMount(){
@@ -41,7 +42,7 @@ class Board extends Component{
         if(this.state.queryId !== undefined){
             this.showModalByQueryId();
         }//if end
-    }//componentDidMount() end
+    }//componentDidMount() end 
 
     async getPages(){
         const page = this.state.page; 
@@ -101,6 +102,13 @@ class Board extends Component{
         this.setState({modalState:false});
     }//closeModal() end
 
+    //서치에서 받아와서 state수정하는 함수
+    //title, writer 변경 필요
+    async changeSearchInfo(title,writer){
+        await this.setState({title:title,writer:writer},()=>{this.getPages()});
+    }//changeSearchInfo() end
+
+
     render(){
 
         let pageInfo = {page:this.state.page, 
@@ -110,15 +118,14 @@ class Board extends Component{
         };
 
         let pageFunction = {changePageNo : this.changePageNo, changeArticleId:this.changeArticleId};
-        
+        let searchFunction = {changeSearchInfo : this.changeSearchInfo};
         
         const showModal = this.state.modalState;
         const modalContent = this.state.modalContent;
 
         return <div id="layout_board">
-            <SearchModule></SearchModule>
+            <SearchModule searchFunction={searchFunction} ></SearchModule>
             <TableModule pageInfo={pageInfo} pageFunction={pageFunction}></TableModule>
-            
             <Modal 
             open = {showModal} //모달이 열려있니 닫혀있니? state로 관리되는 값이기때문에 변경시 열려진다!
             onClose = {this.closeModal} //모달이 닫힐만한 상황일때 뭐하니?  open의 값을 false로 바꿔준다!

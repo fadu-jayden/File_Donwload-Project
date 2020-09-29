@@ -27,11 +27,6 @@
     color: white;
 }
 
-
-#layout_board #section_table {
-    /* background-color: indianred; */
-}
-
 #layout_board #section_table #headerCell_id {
     width:80px;
 }
