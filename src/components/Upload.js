@@ -56,7 +56,7 @@ class Upload extends Component{
     }//if end
 
     axios({
-      url: 'http://localhost:8080/api/uploadFile',
+      url: 'http://localhost:8070/api/uploadFile',
       method: 'POST',
       data: formData,
       headers: {
