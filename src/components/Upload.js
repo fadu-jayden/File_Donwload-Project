@@ -97,7 +97,7 @@ class Upload extends Component{
 
   async getFileList() { 
     let fileId = this.state.fileId;
-    await axios.get('C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/ROOT/datas/').then((response)=>{
+    await axios.get('C:/"Program Files"/"Apache Software Foundation"/"Tomcat 8.5"/webapps/ROOT/datas/').then((response)=>{
       let arr = response.data.map((data)=>{
         return new File(++fileId,data,false);
       })
