@@ -56,7 +56,7 @@ class Upload extends Component{
     }//if end
 
     axios({
-      url: 'http://localhost:8070/api/uploadFile',
+      url: 'http://localhost:8080/api/uploadFile',
       method: 'POST',
       data: formData,
       headers: {
@@ -83,14 +83,12 @@ class Upload extends Component{
     });
   }//uploadFile() end
 
-
+  
   selectUploadFile(e) {
     //파일리스트를 받아서
     const file = e.target.files[0];
     const targetFileInputElement = document.querySelector(".ui.left.pointing.basic.label");
     targetFileInputElement.innerHTML=file.name;
-    
-
     this.setState({file:file});
   }//selectUploadFile() end
 
@@ -98,9 +96,18 @@ class Upload extends Component{
   async getFileList() { 
     let fileId = this.state.fileId;
     // await axios.get('C:/"Program Files"/"Apache Software Foundation"/"Tomcat 8.5"/webapps/ROOT/datas/').then((response)=>{
-      await axios.get('/datas/').then((response)=>{
-      let arr = response.data.map((data)=>{
-        return new File(++fileId,data,false);
+      await axios
+      ({
+        method:'GET',
+        url: 'http://localhost:8080/api/getFiles',
+        headers: {
+          Accept: 'application/json'
+        }
+      })
+      .then((response)=>{
+        let arr = response.data.map((data)=>{
+        console.log(data.fileName);
+        return new File(++fileId,data.fileName,false);
       })
 
       this.setState({getFiles : arr});
