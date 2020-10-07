@@ -189,10 +189,10 @@ class Upload extends Component{
         
         <Header as='h1'>checkFiles</Header>
           <List  id="section_checkList" selection verticalAlign='middle'>
-              {checkedFiles.map((checkFile,index)=>{return(
+              {checkedFiles.forEach((checkFileName,checkFile,index)=>{return(
                 <List.Item key={index} >
                     <List.Content >
-                      <Label >{checkFile}</Label>
+                      <Label >{checkFileName}</Label>
                     </List.Content>
                 </List.Item>)})}
           </List>
