@@ -166,20 +166,25 @@ class Upload extends Component{
     
 
     checkedFiles.forEach((checkedFile) => {
-        const formData = new FormData();
-        formData.append("checkedFile",checkedFile);
-        axios({
-          url: 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile',
-          method: 'POST',
-          data: formData,
-      }).then((response)=>{
-        console.log('파일다운로드 동작 완료');
-        console.log(response);
+
+        let a = document.createElement("a");
+        a.href='http://10.10.19.32:8095/ae_fileIO/api/downloadFile/'+checkedFile;
+        a.click();
+
+      //   const formData = new FormData();
+      //   formData.append("checkedFile",checkedFile);
+      //   axios({
+      //     url: 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile',
+      //     method: 'POST',
+      //     data: formData,
+      // }).then((response)=>{
+      //   console.log('파일다운로드 동작 완료');
+      //   console.log(response);
         // let a = document.createElement("a");
         // a.href=response;
         // a.download=response;
         // a.click();
-      })
+      // })
     });
   
     
