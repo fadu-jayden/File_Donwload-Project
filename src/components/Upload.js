@@ -162,10 +162,15 @@ class Upload extends Component{
     //   a.download=file;
     //   a.click();
     // });
+
+    
+    const formData = new FormData();
+    formData.append("checkedFiles",checkedFiles);
+
     axios({
       url: 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile',
       method: 'POST',
-      data: {checkedFiles : checkedFiles},
+      data: formData,
    })
     
     getFiles.filter((file)=>file.isChecked=false);
