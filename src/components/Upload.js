@@ -174,7 +174,7 @@ class Upload extends Component{
         // a.download=''+checkedFile;
         console.log(`${checkedFile}`);
         a.click();
-        setTimeout(1000);
+        setTimeout(function(){}, 1000);
       //   const formData = new FormData();
       //   formData.append("checkedFile",checkedFile);
       //   axios({
