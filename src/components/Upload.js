@@ -171,7 +171,7 @@ class Upload extends Component{
           method: 'POST',
           data: formData,
       }).then((response)=>{
-        console(response.data);
+        console.log(response.data);
       })
     });
   
