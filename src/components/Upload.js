@@ -170,6 +170,8 @@ class Upload extends Component{
           url: 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile',
           method: 'POST',
           data: formData,
+      }).then((response)=>{
+        console(response.data);
       })
     });
   
