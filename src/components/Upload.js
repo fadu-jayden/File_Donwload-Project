@@ -165,7 +165,7 @@ class Upload extends Component{
 
     
 
-    checkedFiles.map( (checkedFile) => {
+    checkedFiles.map( async (checkedFile) => {
         console.log(typeof(checkedFile));
         let a = document.createElement("a");
         let url = 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile?fileName='+checkedFile;
@@ -174,7 +174,8 @@ class Upload extends Component{
         console.log(`${checkedFile}`);
         a.click();
         console.log('잠시만요....');
-        setTimeout(function(){}, 5000);
+        await setTimeout(function(){}, 5000);
+
       //   const formData = new FormData();
       //   formData.append("checkedFile",checkedFile);
       //   axios({
