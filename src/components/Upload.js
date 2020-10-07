@@ -107,6 +107,7 @@ class Upload extends Component{
       .then((response)=>{
         let arr = response.data.map((data)=>{
         console.log(data.fileName);
+        console.log(data);
         return new File(++fileId,data.fileName,false);
       })
 
