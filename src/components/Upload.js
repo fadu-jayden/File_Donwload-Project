@@ -7,10 +7,11 @@ import {Button, List, Pagination, Checkbox, Label, Header
 import { InputFile } from 'semantic-ui-react-input-file';
 
 class File {
-  constructor(id,title,isChecked){
+  constructor(id,title,isChecked,file){
     this.id=id;
     this.title=title;
     this.isChecked=isChecked;
+    this.file=file;
   }//cons
 }//class File end
 
@@ -24,7 +25,7 @@ class Upload extends Component{
       pageNo:1,
       offsetSize:5,
       getFiles : [],
-      checkedFiles : [],
+      checkedFiles : new Map(),
       showFiles :[],
     };
 
@@ -106,9 +107,7 @@ class Upload extends Component{
       })
       .then((response)=>{
         let arr = response.data.map((data)=>{
-        console.log(data.fileName);
-        console.log(data);
-        return new File(++fileId,data.fileName,false);
+        return new File(++fileId,data.fileName,false,data);
       })
 
       this.setState({getFiles : arr});
@@ -138,14 +137,12 @@ class Upload extends Component{
     const {checkedFiles} = this.state;
     let targetFileName = file.title;
     
-    if(checkedFiles.indexOf(targetFileName)===-1){
-      checkedFiles.push(targetFileName);
+    if(checkedFiles.has(targetFileName)===false){
+      checkedFiles.set(targetFileName,file);
       file.isChecked=true;
       this.setState({checkedFiles :checkedFiles});
     }else{
-      const targetIdx = checkedFiles.indexOf(targetFileName);
-      checkedFiles.splice(targetIdx,1);
-      // checkedFiles.pop(targetFileName);
+      checkedFiles.delete(targetFileName);
       file.isChecked=false;
       this.setState({checkedFiles :checkedFiles});
     }//if~else end
@@ -156,10 +153,10 @@ class Upload extends Component{
   downloadFiles() {
     const {checkedFiles} = this.state;
     let {getFiles} = this.state; 
-
-    checkedFiles.forEach((file) => {
+    
+    checkedFiles.forEach((fileName,file) => {
       let a = document.createElement("a");
-      a.href="/datas/"+file;
+      // a.href="/data/work/servers/tomcat9_ae_fileIO_back/datas/"+fileName;
       a.download=file;
       a.click();
     });
