@@ -165,8 +165,7 @@ class Upload extends Component{
 
     
 
-    checkedFiles.forEach( (checkedFile) => {
-
+    checkedFiles.map( (checkedFile) => {
         console.log(typeof(checkedFile));
         let a = document.createElement("a");
         let url = 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile?fileName='+checkedFile;
