@@ -173,7 +173,7 @@ class Upload extends Component{
           method: 'POST',
           data: formData,
       }).then((response)=>{
-        console.log('파일다운로드 동작 완료');
+        console.log('파일다운로드 동작 완료'+response);
         // let a = document.createElement("a");
         // a.href=response;
         // a.download=response;
