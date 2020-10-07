@@ -169,7 +169,7 @@ class Upload extends Component{
 
         let a = document.createElement("a");
         a.href='http://10.10.19.32:8095/ae_fileIO/api/downloadFile/'+checkedFile;
-        a.download=''+checkedFile;
+        // a.download=''+checkedFile;
         console.log(`${checkedFile}`);
         a.click();
 
