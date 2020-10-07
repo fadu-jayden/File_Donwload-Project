@@ -7,11 +7,10 @@ import {Button, List, Pagination, Checkbox, Label, Header
 import { InputFile } from 'semantic-ui-react-input-file';
 
 class File {
-  constructor(id,title,isChecked,file){
+  constructor(id,title,isChecked){
     this.id=id;
     this.title=title;
     this.isChecked=isChecked;
-    this.file=file;
   }//cons
 }//class File end
 
@@ -107,7 +106,7 @@ class Upload extends Component{
       })
       .then((response)=>{
         let arr = response.data.map((data)=>{
-        return new File(++fileId,data.fileName,false,data);
+        return new File(++fileId,data.fileName,false);
       })
 
       this.setState({getFiles : arr});
@@ -156,12 +155,18 @@ class Upload extends Component{
     const {checkedFiles} = this.state;
     let {getFiles} = this.state; 
 
-    checkedFiles.forEach((file) => {
-      let a = document.createElement("a");
-      a.href="/datas/"+file;
-      a.download=file;
-      a.click();
-    });
+    //이 부분에 파일 Download를 위한 Spring Backend API 가 준비되어야 할것 같다.
+    // checkedFiles.forEach((file) => {
+    //   let a = document.createElement("a");
+    //   a.href="/datas/"+file;
+    //   a.download=file;
+    //   a.click();
+    // });
+    axios({
+      url: 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile',
+      method: 'POST',
+      checkedFiles: checkedFiles,
+   })
     
     getFiles.filter((file)=>file.isChecked=false);
     this.setState({getFiles:getFiles}); 
