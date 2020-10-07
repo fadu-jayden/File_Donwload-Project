@@ -165,7 +165,7 @@ class Upload extends Component{
     axios({
       url: 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile',
       method: 'POST',
-      data: checkedFiles,
+      data: {checkedFiles : checkedFiles},
    })
     
     getFiles.filter((file)=>file.isChecked=false);
