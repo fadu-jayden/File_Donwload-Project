@@ -164,11 +164,10 @@ class Upload extends Component{
     // });
 
     
-
+    let i = 1;
     checkedFiles.forEach((checkedFile) => {
-        
+      
       setTimeout(function(){
-
         console.log(typeof(checkedFile));
         let a = document.createElement("a");
         let url = 'http://10.10.19.32:8095/ae_fileIO/api/downloadFile?fileName='+checkedFile;
@@ -177,8 +176,8 @@ class Upload extends Component{
         console.log(`${checkedFile}`);
         a.click();
         console.log('잠시만요....');
-      },4000)
-
+      },i*1000);
+      i++;
         
       //   const formData = new FormData();
       //   formData.append("checkedFile",checkedFile);
