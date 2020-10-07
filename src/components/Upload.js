@@ -25,7 +25,7 @@ class Upload extends Component{
       pageNo:1,
       offsetSize:5,
       getFiles : [],
-      checkedFiles : new Map(),
+      checkedFiles : [],
       showFiles :[],
     };
 
@@ -137,12 +137,14 @@ class Upload extends Component{
     const {checkedFiles} = this.state;
     let targetFileName = file.title;
     
-    if(checkedFiles.has(targetFileName)===false){
-      checkedFiles.set(targetFileName,file);
+    if(checkedFiles.indexOf(targetFileName)===-1){
+      checkedFiles.push(targetFileName);
       file.isChecked=true;
       this.setState({checkedFiles :checkedFiles});
     }else{
-      checkedFiles.delete(targetFileName);
+      const targetIdx = checkedFiles.indexOf(targetFileName);
+      checkedFiles.splice(targetIdx,1);
+      // checkedFiles.pop(targetFileName);
       file.isChecked=false;
       this.setState({checkedFiles :checkedFiles});
     }//if~else end
@@ -153,10 +155,10 @@ class Upload extends Component{
   downloadFiles() {
     const {checkedFiles} = this.state;
     let {getFiles} = this.state; 
-    
-    checkedFiles.forEach((fileName,file) => {
+
+    checkedFiles.forEach((file) => {
       let a = document.createElement("a");
-      // a.href="/data/work/servers/tomcat9_ae_fileIO_back/datas/"+fileName;
+      a.href="/datas/"+file;
       a.download=file;
       a.click();
     });
@@ -189,10 +191,10 @@ class Upload extends Component{
         
         <Header as='h1'>checkFiles</Header>
           <List  id="section_checkList" selection verticalAlign='middle'>
-              {checkedFiles.forEach((checkFileName,checkFile,index)=>{return(
+              {checkedFiles.map((checkFile,index)=>{return(
                 <List.Item key={index} >
                     <List.Content >
-                      <Label >{checkFileName}</Label>
+                      <Label >{checkFile}</Label>
                     </List.Content>
                 </List.Item>)})}
           </List>
