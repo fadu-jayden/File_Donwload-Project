@@ -163,6 +163,8 @@ class Upload extends Component{
     //   a.click();
     // });
 
+    
+
     checkedFiles.forEach((checkedFile) => {
         const formData = new FormData();
         formData.append("checkedFile",checkedFile);
@@ -171,7 +173,11 @@ class Upload extends Component{
           method: 'POST',
           data: formData,
       }).then((response)=>{
-        console.log(response.data);
+        console.log(response);
+        let a = document.createElement("a");
+        a.href=response;
+        a.download=response;
+        a.click();
       })
     });
   
