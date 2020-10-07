@@ -56,7 +56,7 @@ class Upload extends Component{
     }//if end
 
     axios({
-      url: 'http://10.10.13.121:8081/jayden/api/uploadFile',
+      url: 'http://10.10.19.32:8095/ae_fileIO/api/uploadFile',
       method: 'POST',
       data: formData,
       headers: {
@@ -99,7 +99,7 @@ class Upload extends Component{
       await axios
       ({
         method:'GET',
-        url: 'http://10.10.13.121:8081/jayden/api/getFiles',
+        url: 'http://10.10.19.32:8095/ae_fileIO/api/getFiles',
         headers: {
           Accept: 'application/json'
         }
