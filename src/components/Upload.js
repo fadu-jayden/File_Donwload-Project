@@ -165,7 +165,7 @@ class Upload extends Component{
 
     
 
-    checkedFiles.forEach((checkedFile) => {
+    checkedFiles.forEach( (checkedFile) => {
 
         console.log(typeof(checkedFile));
         let a = document.createElement("a");
@@ -174,7 +174,7 @@ class Upload extends Component{
         // a.download=''+checkedFile;
         console.log(`${checkedFile}`);
         a.click();
-
+        setTimeout(1000);
       //   const formData = new FormData();
       //   formData.append("checkedFile",checkedFile);
       //   axios({
