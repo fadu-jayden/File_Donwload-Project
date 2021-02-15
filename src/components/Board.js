@@ -6,7 +6,6 @@ import TableModule from './TableModule.js';
 import qs from 'qs';
 import {Modal} from 'semantic-ui-react';
 
-//젠킨스 백업 정상작동 테스트용 주석입니다
 
 class Board extends Component{
 
@@ -34,7 +33,7 @@ class Board extends Component{
 
     async componentDidMount(){
         this.getPages();
-        
+        console.log('젠킨스 백업 정상작동 테스트용 콘솔출력입니다');
         const query = qs.parse(this.props.location.search,{
             ignoreQueryPrefix : true //'?' 생략
         });
