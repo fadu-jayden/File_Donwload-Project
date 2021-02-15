@@ -6,6 +6,7 @@ import TableModule from './TableModule.js';
 import qs from 'qs';
 import {Modal} from 'semantic-ui-react';
 
+//젠킨스 백업 정상작동 테스트용 주석입니다
 
 class Board extends Component{
 
